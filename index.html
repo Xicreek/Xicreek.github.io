@@ -2,175 +2,196 @@
 <html>
 <head>
   <style>
+    /* 基本样式 */
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f8ff; /* 浅蓝色背景 */
-      background-image: url('https://img.freepik.com/free-vector/circuits-blue-red-gradient-digital-background_23-2148821701.jpg?w=2000&t=st=1702125243~exp=1702125843~hmac=f4ae72781796e55b5c0b77ba3a02e8447b68f8370516eafd1e6a3bc1f436aa2d'); /* 添加背景图案，这里需要您提供一个链接 */
+      background-color: #f0f8ff;
+      background-image: url('您的背景图像链接');
       background-size: cover;
       background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
     }
 
-    .container {
-      width: 800px;
+    /* 透明菜单栏样式 */
+    nav {
+      background-color: rgba(10, 88, 202, 0.5); /* 透明化处理 */
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav li {
+      margin: 0 20px;
+      transition: transform 0.3s;
+    }
+
+    nav li:hover {
+      transform: scale(1.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f0f8ff;
+    }
+
+    /* 头像样式 */
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       margin: 20px auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px; /* 添加圆角 */
-      box-shadow: 0 0 15px rgba(0,0,0,0.2); /* 添加阴影效果 */
-      opacity: 0.95; /* 轻微透明效果 */
+      display: block;
+      animation: fadeIn 2s;
     }
 
-    .header {
+    /* 内容排版优化 */
+    .container {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume, .projects, .skills, .contact {
+      width: 60%;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      animation: slideIn 1s;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    h2 {
+      color: #0a58ca;
       text-align: center;
     }
 
-    .header h1 {
-      font-size: 36px;
-      color: #0a58ca; 
-      margin-bottom: 0;
+    p, li {
+      color: #333;
     }
 
-    .header p {
-      font-size: 18px;
-      color: #333333;
-      margin-top: 5px;
-    }
-
-    .profile {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .profile img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      margin-right: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.5s;
-    }
-
-    .profile img:hover {
-      transform: scale(1.1); /* 图片放大效果 */
-    }
-
-    .profile ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .profile li {
-      font-size: 18px;
-      color: #333333;
-      margin-bottom: 10px;
-    }
-
-    .resume, .contact {
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #e8f0fe; /* 轻微不同颜色背景 */
-      border-radius: 5px;
-    }
-
-    .resume h2, .contact h2 {
-      font-size: 24px;
-      color: #0a58ca; /* 标题蓝色 */
-      margin-bottom: 10px;
-    }
-
-    .resume p, .contact li {
-      font-size: 18px;
-      color: #666666;
-    }
-
-    .contact ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .contact li {
-      margin-right: 20px;
-      margin-bottom: 10px;
-    }
-
-    .contact li a {
-      color: #0a58ca; /* 链接使用ChatGPT蓝色 */
+    a {
+      color: #0a58ca;
       text-decoration: none;
     }
 
-    .contact li a:hover {
-      color: #333333;
+    a:hover {
       text-decoration: underline;
     }
 
-    /* 返回顶部按钮样式调整 */
-    button {
-      background-color: #0a58ca; /* 按钮背景色为ChatGPT蓝色 */
-      color: white;
-      border-radius: 5px; /* 圆角 */
-      border: none;
-      padding: 10px 20px;
+    /* 底部联系方式样式 */
+    .footer {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(10, 88, 202, 0.5);
+      padding: 10px 0;
+      text-align: center;
     }
 
-    button:hover {
-      background-color: #084298; /* 鼠标悬停时深色 */
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
     }
 
-    @keyframes rainbow {
-      0% {color: red;}
-      20% {color: orange;}
-      40% {color: yellow;}
-      60% {color: green;}
-      80% {color: blue;}
-      100% {color: purple;}
+    .footer li {
+      margin: 0 20px;
+    }
+
+    .footer a {
+      color: white;
     }
   </style>
 </head>
 <body>
+  <!-- 透明菜单栏 -->
+  <nav>
+    <ul>
+      <li><a href="#resume">简历</a></li>
+      <li><a href="#projects">项目经历</a></li>
+      <li><a href="#skills">个人能力</a></li>
+      <li><a href="#contact">联系方式</a></li>
+    </ul>
+  </nav>
+
+  <!-- 页面内容 -->
   <div class="container">
-    <div class="header">
-      <h1>西溪子的个人网站</h1>
-      <p>欢迎来到我的个人网站，这里有我的个人简介、简历和联系方式。</p>
+    <!-- 头像 -->
+    <img src="您的头像链接" alt="头像" class="avatar">
+
+    <div id="resume" class="resume">
+      <h2>个人简历</h2>
+        <p>姓名：西溪子</p>
+        <p>年龄：20岁</p>
+        <p>性别：男</p>
+        <p>籍贯：天津</p>
+        <p>学历：本科</p>
+	<p>学校：天津工业大学/博林格林州立大学</p>
+	<p>入学时间：2022年</p>
+        <p>专业：信息管理与信息系统/Business Intelligence(商业智能分析)</p>
+        <p>爱好：编程、阅读、旅游</p>
     </div>
-    <div class="profile">
-      <img src="C:\Users\21260\Desktop\logo\logo.jpg" alt="西溪子的照片">
+    <div id="projects" class="projects">
+      <h2>项目经历</h2>
       <ul>
-        <li>姓名：西溪子</li>
-        <li>年龄：20岁</li>
-        <li>性别：男</li>
-        <li>籍贯：天津</li>
-        <li>学历：本科</li>
-        <li>专业：信息管理与信息系统</li>
-        <li>爱好：编程、阅读、旅游</li>
+        <li>个人博客网站：使用HTML/CSS/JavaScript设计的响应式网站</li>
+        <li>学校管理系统：参与开发，负责前端界面设计和实现</li>
+
       </ul>
     </div>
-    <div class="resume">
-      <h2>简历</h2>
-      <p>我于2022年就读于天津工业大学与博林格林州立大学信息管理与信息系统/Business Intelligence专业。在校期间，我学习了多种技能，我熟悉多种编程语言，如Python，C++，JavaScript，HTML，CSS等。我还掌握数据分析和可视化相关的技能如R，MySQL，Hadoop，可以熟练使用HB和Spark进行大数据统计分析。</p>
-      <p>我于2024年尝试自己在外包平台上接取外包项目，接取并完成过有关网络爬虫，数据分析可视化的项目，完成项目中我表现出了优秀的技术能力，创新思维，团队合作精神和沟通能力。我为项目团队完成的产品质量和用户体验做出了重要的贡献。</p>
-      <p>我目前正在寻找一个工作实习的机会，希望能加入一个有挑战性，有创造力，有前景的团队，继续发挥我的潜力，实现我的价值，为社会和人类的进步做出贡献。</p>
+    <div id="skills" class="skills">
+      <h2>个人能力</h2>
+      <ul>
+	<li>熟悉多种编程语言，如Python，C++，JavaScript，HTML，CSS等</li>
+	<li>掌握数据分析和可视化相关的技能如R，MySQL，Hadoop等</li>
+	<li>可以熟练使用HB和Spark进行大数据统计分析</li>
+        <li>快速学习新技术和工具</li>
+        <li>良好的团队合作能力和沟通技巧</li>
+        <li>解决问题的能力和创新思维</li>
+      </ul>
     </div>
-    </div>
-    <div class="contact">
+    <div id="contact" class="contact">
       <h2>联系方式</h2>
-       <ul>
-        <li>邮箱：<a href="mailto:2126037616@qq.com">2126037616@qq.com</a></li>
-        <li>电话：<a href="tel:+8615910305286">+86 15910305286</a></li>
-        <li>微信：<a href="weixin://dl/chat?pwpuwqygp">pwpuwqygp</a></li>
-        <li>GitHub：<a href="https://github.com/Xicreek">https://github.com/Xicreek</a></li>
-      </ul>
+      <p>邮箱：2126037616@qq.com</p>
+      <p>电话：+8615910305286</p>
+      <p>微信：pwpuwqygp</p>
+      <p>GitHub：<a href="https://github.com/Xicreek">Xicreek</a></p>
     </div>
   </div>
-  <button onclick="window.scrollTo(0, 0);">返回顶部</button>
+
+  <!-- 底部始终显示的联系方式 -->
+  <div class="footer">
+    <ul>
+      <li><a href="mailto:2126037616@qq.com">邮箱</a></li>
+      <li><a href="tel:+8615910305286">电话</a></li>
+      <li><a href="weixin://dl/chat?pwpuwqygp">微信</a></li>
+      <li><a href="https://github.com/Xicreek">GitHub</a></li>
+    </ul>
+  </div>
 </body>
 </html>
